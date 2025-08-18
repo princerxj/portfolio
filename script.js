@@ -279,51 +279,6 @@ projectCards.forEach((card, index) => {
 
 const profileImages = document.querySelectorAll('.profile-image, .about-profile-image');
 
-profileImages.forEach(profileImg => {
-    profileImg.addEventListener('mouseenter', () => {
-        profileImg.style.transform = 'scale(1.05) rotate(5deg)';
-        
-        if (profileImg.classList.contains('profile-image')) {
-            profileImg.style.boxShadow = '0 0 50px rgba(0, 245, 255, 0.8)';
-        } else {
-            profileImg.style.boxShadow = '0 0 40px rgba(0, 245, 255, 0.8)';
-        }
-    });
-
-    profileImg.addEventListener('mouseleave', () => {
-        profileImg.style.transform = 'scale(1) rotate(0deg)';
-        
-        if (profileImg.classList.contains('profile-image')) {
-            profileImg.style.boxShadow = '0 0 20px rgba(0, 245, 255, 0.3)';
-        } else {
-            profileImg.style.boxShadow = '0 0 30px rgba(0, 245, 255, 0.4)';
-        }
-    });
-
-    profileImg.addEventListener('click', () => {
-        const ripple = document.createElement('div');
-        ripple.style.cssText = `
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 0;
-            height: 0;
-            border-radius: 50%;
-            background: rgba(0, 245, 255, 0.3);
-            transform: translate(-50%, -50%);
-            animation: ripple 0.6s ease-out;
-            pointer-events: none;
-            z-index: 10;
-        `;
-        
-        profileImg.style.position = 'relative';
-        profileImg.appendChild(ripple);
-        
-        setTimeout(() => {
-            profileImg.removeChild(ripple);
-        }, 600);
-    });
-});
 
 const style = document.createElement('style');
 style.textContent = `
@@ -474,7 +429,6 @@ function initCodeBackground() {
         ''
     ];
     
-    // Generate multiple columns of code
     let codeContent = '';
     const columns = 8;
     const rowsPerColumn = 100;
